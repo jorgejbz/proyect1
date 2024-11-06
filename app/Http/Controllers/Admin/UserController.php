@@ -46,7 +46,7 @@ class UserController extends Controller
                 'success_message' => $customMessages
             ]);
         }
-    
+    //hola
         // Si no es una solicitud AJAX, retornar un error o redirigir
         return response()->json(['error' => 'Invalid request'], 400);
     }
