@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="{{asset('admin/css/adminlte.min.css')}}">
   {{-- select2 --}}
   <link rel="stylesheet" href="{{url('admin/plugins/select2/css/select2.min.css')}}">
+
+  {{-- boton esp32 --}}
+<link rel="stylesheet" href="{{ asset('admin/css/led-control.css') }}">
+{{-- <script src="{{ asset('admin/css/led-control.css') }}"></script> --}}
 </head>
 <!--
 `body` tag options:
@@ -64,6 +68,8 @@
 <script src="{{asset('admin/js/pages/dashboard3.js')}}"></script>
 {{-- custom js --}}
 <script src="{{asset('admin/js/custom.js')}}"></script>
+
+
 {{-- select2 --}}
 <script src="{{url('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <script>

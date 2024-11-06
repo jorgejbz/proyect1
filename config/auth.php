@@ -49,6 +49,10 @@ return [
             'provider' =>'mongoUsers'
         ]
     ],
+    'job' =>[
+        'driver' => 'session',
+        'provider' => 'jobs',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -76,10 +80,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
+        'jobs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Job::class,
+        ],
         'mongoUsers' => [  // Proveedor para el guardia "user" basado en MongoDB
         'driver' => 'eloquent',  // Si estás usando MongoDB, puedes mantener 'eloquent'
         'model' => App\Models\User::class,  // El modelo que usas con MongoDB
-    ]
+        ]
     ],
 
     /*

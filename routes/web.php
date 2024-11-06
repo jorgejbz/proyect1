@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ESP32Controller;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,6 +18,11 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get','post'],'update-admin-details',[AdminController::class,'updateAdminDetails']);
         Route::get('logout',[AdminController::class,'logout']);
 
+        //ruta para esp32
+        Route::get('/led', [ESP32Controller::class, 'showLedControl'])->name('led');
+        Route::post('/led/toggle', [ESP32Controller::class, 'toggleLed'])->name('led.toggle');
+        Route::get('/led/state', [ESP32Controller::class, 'getLedState'])->name('led.state');
+        Route::post('/led/off', [ESP32Controller::class, 'turnOffLed'])->name('led.off');
         //user page
         Route::get('user-list',[UserController::class,'index'])->name('user-list');
         Route::post('update-user-status',[UserController::class,'update']);
