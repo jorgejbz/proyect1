@@ -36,23 +36,23 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-        'admin' =>[
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-        'user' =>[
-            'driver' => 'session',
-            'provider' =>'mongoUsers'
-        ]
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
     ],
-    'job' =>[
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins',
+    ],
+    'user' => [
+        'driver' => 'session',
+        'provider' => 'mongoUsers',
+    ],
+    'job' => [
         'driver' => 'session',
         'provider' => 'jobs',
     ],
+],
 
     /*
     |--------------------------------------------------------------------------

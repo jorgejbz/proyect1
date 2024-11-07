@@ -15,8 +15,11 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get','post'],'dashboard',[AdminController::class,'dashboard']);
         Route::match(['get','post'],'update-password',[AdminController::class,'updatePassword']);
         Route::post('check-current-password',[AdminController::class,'checkCurrentPassword']);
-        Route::match(['get','post'],'update-admin-details',[AdminController::class,'updateAdminDetails']);
+        Route::match(['get','post'],'update-admin-details',[AdminController::class,'updateAdminDetails'])->name('update-admin-details');
         Route::get('logout',[AdminController::class,'logout']);
+        //registrar admins
+        Route::get('add-admin', [AdminController::class, 'create'])->name('create');
+        Route::post('admin_register', [AdminController::class, 'store'])->name('store');
 
         //ruta para esp32
         Route::get('/led', [ESP32Controller::class, 'showLedControl'])->name('led');

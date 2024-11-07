@@ -44,7 +44,7 @@
 
                   {{-- hace que se seleccione en color contrastante la seccion activa --}}
                   @if(Session::get('page')=="dashboard" ||
-                  Session::get('page')=="update-admin-details" || Session::get('page')=="update-password")
+                  Session::get('page')=="update-admin-details" || Session::get('page')=="update-password" || Session::get('page')=="add-admin")
                   <?php $active = "active"; ?>
                   @else
                   <?php $active = ""; ?>
@@ -84,15 +84,15 @@
                 </a>
               </li>
               {{-- fin --}}
-                  @if(Session::get('page')=="dashboard")
+                  @if(Session::get('page')=="add-admin")
                   <?php $active = "active"; ?>
                   @else
                   <?php $active = ""; ?>
                   @endif
               <li class="nav-item">
-                <a href="{{url('admin/dashboard')}}" class="nav-link {{$active}}">
+                <a href="{{url('admin/add-admin')}}" class="nav-link {{$active}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>SubAdmins</p>
+                  <p>Registrar Mas Admins</p>
                 </a>
               </li>
             </ul>

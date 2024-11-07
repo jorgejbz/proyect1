@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 // use App\Http\Controllers\Admin\Image;
 use Intervention\Image\Facades\Image; // Importación de la clase Image de Intervention Image
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
+
 
 class AdminController extends Controller
 {
@@ -156,4 +158,52 @@ class AdminController extends Controller
     return view('admin.update_admin_details');
 }
 
+public function store(Request $request){
+    Session::put('page', 'add-admin');
+
+    // Validar los datos del formulario
+    $request->validate([
+        'admin_name' => 'required|regex:/^[\p{L}\s]+$/u',     // Solo letras y espacios
+        'admin_email' => 'required|string|email|max:255|unique:admins,email',
+        'admin_mobile' => 'required|numeric',
+        'password' => 'required|string|min:8',
+    ]);
+    // Mensajes de error personalizados
+    $customMessages = [
+        'admin_email.required' => 'El campo correo es requerido',
+        'admin_email.email' => 'El correo debe ser válido',
+        'admin_email.unique' => 'El correo ya está registrado',
+        'admin_name.required' => 'El campo nombre es requerido',
+        'admin_name.regex' => 'El campo nombre solo acepta letras y espacios, no números ni caracteres especiales',
+        'admin_mobile.required' => 'El campo teléfono es requerido',
+        'admin_mobile.numeric' => 'El campo teléfono solo acepta números',
+        'password.required' => 'La contraseña es requerida',
+        'password.min' => 'La contraseña debe tener al menos 6 caracteres',
+        ];
+
+    // Crear un nuevo usuario
+    $admin = new Admin();
+    $admin->name = $request->input('admin_name');
+    $admin->type = 'admin';
+    $admin->mobile = $request->input('admin_mobile');
+    $admin->email = $request->input('admin_email');
+    $admin->password = bcrypt($request->input('password')); // Encriptar la contraseña
+    $admin->image = '';
+    $admin->status = 1; // Asignar status = 1 automáticamente
+
+
+    // Guardar el nuevo usuario en la base de datos
+    $admin->save();
+
+    // Redirigir a la página de actualización de detalles de admin con un mensaje de éxito
+    return redirect()->route('update-admin-details')->with('success_message', 'Usuario Creado Correctamente.');
+}
+public function create()
+{
+    Session::put('page', 'add-admin'); // Consistencia en el nombre de la clave
+
+    $add_admin = Admin::get();
+
+    return view('admin.add_admin', compact('add_admin'));
+}
 }
