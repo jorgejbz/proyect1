@@ -7,7 +7,7 @@ use App\Models\Job;
 
 class ESP32Controller extends Controller
 {
-    public function showLedControl()
+    public function showLedControl()//comentario de prueba
     {
         session()->put('page', 'led.control');
 
