@@ -113,7 +113,12 @@ return [
         ],
         'mongodb' => [
                 'driver' => 'mongodb',
+                //se comenta con el que no vas a TRABAJAR
+                //trabajar de manera LOCAL
                 'dsn' => env('DB_URI', 'mongodb://localhost:27017'),
+                //trabajar de manera CLOUD con MONGOATLAS Y UN CLUSTER
+                // 'dsn' => env('DB_URI', 'mongodb+srv://username:password@<atlas-cluster-uri>/myappdb?retryWrites=true&w=majority'),
+                //NOMBRE DE TU DATABASE
                 'database' => 'proyect1',
         ],
     ],
