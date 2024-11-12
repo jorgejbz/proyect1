@@ -113,7 +113,7 @@ return [
         ],
         'mongodb' => [
                 'driver' => 'mongodb',
-                'dsn' => env('DB_URI', 'mongodb+srv://username:password@<atlas-cluster-uri>/myappdb?retryWrites=true&w=majority'),
+                'dsn' => env('DB_URI', 'mongodb://localhost:27017'),
                 'database' => 'proyect1',
         ],
     ],
