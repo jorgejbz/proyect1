@@ -95,10 +95,10 @@ function actualizarNivelCapacidad() {
     });
 }
 
-setInterval(actualizarNivelCapacidad, 5000); // Llama a la función cada 5 segundos
+setInterval(actualizarNivelCapacidad, 3000); // Llama a la función cada 3 segundos
 
 
-// chartjs para nivel de capacidad de la tolva:
+// chartjs grafica para nivel de capacidad de la tolva:
 // Inicializa Chart.js
 var ctx = document.getElementById('nivelCapacidadChart').getContext('2d');
 var nivelCapacidadChart = new Chart(ctx, {
@@ -156,5 +156,5 @@ function actualizarGraficoNivelCapacidad() {
     });
 }
 
-// Llama a la función de actualización cada 5 segundos
-setInterval(actualizarGraficoNivelCapacidad, 5000);
+// Llama a la función de actualización cada 3 segundos
+setInterval(actualizarGraficoNivelCapacidad, 3000);

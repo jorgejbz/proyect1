@@ -19,29 +19,43 @@
       </div><!-- /.container-fluid -->
     </div>
 
-    <!-- Aquí comienza el cuerpo principal -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
+<!-- Aquí comienza el cuerpo principal -->
+<div class="content">
+  <div class="container-fluid">
+      <div class="row">
+          <!-- Card para el control de capacidad -->
           <div class="col-lg-12">
-            <div class="card">
-              <div class="card-body">
-                <h1>Control de Capacidad</h1>
-                <!-- El id es para llamar a la función en custom.js para actualizar el nivel de capacidad -->
-                Nivel de capacidad actual: <strong id="nivel-capacidad">{{ $nivelCapacidad ?? 'Cargando...' }}%</strong>
+              <div class="card">
+                  <div class="card-header">
+                      <h1 class="card-title">Control de Capacidad</h1>
+                  </div>
+                  <div class="card-body">
+                      <!-- Información del nivel de capacidad -->
+                      <p>Nivel de capacidad actual: <strong id="nivel-capacidad">{{ $nivelCapacidad ?? 'Cargando...' }}%</strong></p>
+                  </div>
               </div>
-              <canvas id="nivelCapacidadChart" width="400" height="200"></canvas>
-
-                <!-- Carga de Chart.js -->
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                <!-- Carga de tu archivo custom.js -->
-                <script src="{{ asset('admin/js/custom.js') }}"></script>
-
-            </div>
           </div>
-        </div>
+
+          <!-- Card para el gráfico de nivel de capacidad -->
+          <div class="col-lg-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h3 class="card-title">Gráfico en Tiempo Real</h3>
+                  </div>
+                  <div class="card-body">
+                      <!-- Lienzo para Chart.js -->
+                      <canvas id="nivelCapacidadChart" width="400" height="128"></canvas>
+                    </div>
+              </div>
+          </div>
       </div>
-    </div>
+  </div>
 </div>
+
+<!-- Carga de Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Carga de tu archivo custom.js -->
+<script src="{{ asset('admin/js/custom.js') }}"></script>
+
 @endsection
