@@ -96,3 +96,65 @@ function actualizarNivelCapacidad() {
 }
 
 setInterval(actualizarNivelCapacidad, 5000); // Llama a la función cada 5 segundos
+
+
+// chartjs para nivel de capacidad de la tolva:
+// Inicializa Chart.js
+var ctx = document.getElementById('nivelCapacidadChart').getContext('2d');
+var nivelCapacidadChart = new Chart(ctx, {
+    type: 'line', // Gráfico de línea
+    data: {
+        labels: [], // Aquí irán las etiquetas de tiempo
+        datasets: [{
+            label: 'Nivel de Capacidad (%)',
+            data: [], // Aquí irán los datos del nivel de capacidad
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderWidth: 1,
+            fill: true
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100 // Porque el nivel de capacidad es un porcentaje
+            }
+        }
+    }
+});
+
+// Función para actualizar el gráfico
+function actualizarGraficoNivelCapacidad() {
+    $.ajax({
+        url: "/admin/api/nivel-capacidad", // URL para obtener el nivel de capacidad
+        method: "GET",
+        success: function(data) {
+            if (data.nivel) {
+                var now = new Date(); // Obtén el tiempo actual
+                var timeString = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+
+                // Agregar el nuevo nivel de capacidad y tiempo al gráfico
+                nivelCapacidadChart.data.labels.push(timeString);
+                nivelCapacidadChart.data.datasets[0].data.push(data.nivel);
+
+                // Limitar el número de puntos en el gráfico para que no crezca infinitamente
+                if (nivelCapacidadChart.data.labels.length > 10) { // Solo muestra los últimos 10 puntos
+                    nivelCapacidadChart.data.labels.shift();
+                    nivelCapacidadChart.data.datasets[0].data.shift();
+                }
+
+                // Actualiza el gráfico
+                nivelCapacidadChart.update();
+            } else {
+                console.error('Error al obtener el nivel de capacidad');
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+        }
+    });
+}
+
+// Llama a la función de actualización cada 5 segundos
+setInterval(actualizarGraficoNivelCapacidad, 5000);

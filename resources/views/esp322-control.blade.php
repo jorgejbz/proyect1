@@ -30,7 +30,13 @@
                 <!-- El id es para llamar a la función en custom.js para actualizar el nivel de capacidad -->
                 Nivel de capacidad actual: <strong id="nivel-capacidad">{{ $nivelCapacidad ?? 'Cargando...' }}%</strong>
               </div>
-              <script src="{{ asset('admin/js/custom.js') }}"></script>
+              <canvas id="nivelCapacidadChart" width="400" height="200"></canvas>
+
+                <!-- Carga de Chart.js -->
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <!-- Carga de tu archivo custom.js -->
+                <script src="{{ asset('admin/js/custom.js') }}"></script>
 
             </div>
           </div>
