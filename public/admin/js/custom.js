@@ -89,7 +89,7 @@ function actualizarNivelCapacidad() {
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Si está mal la URL o hay un problema con la solicitud AJAX
-            $('#nivel-capacidad').text('Error de conexión, algo salió mal xd');
+            $('#nivel-capacidad').text('Error de conexión, ESP32 Desconectado');
             console.error('Error al obtener el nivel de capacidad:', textStatus, errorThrown);
         }
     });
