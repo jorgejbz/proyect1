@@ -1,3 +1,4 @@
+// funcion para ver la contrase;a si es correcta o no
 $(document).ready(function(){
     //check admin password es correcta o nel
     $("#current_pwd").keyup(function(){
@@ -71,29 +72,23 @@ $(document).on("click", ".updateUserStatus", function() {
     });
 });
 
-// Función para actualizar el nivel de capacidad automáticamente
+//funcion para actualizar la pagina cada que cambia el status de capacidad
 function actualizarNivelCapacidad() {
-    // Hacemos una petición AJAX al controlador
     $.ajax({
-        url: "/nivel-capacidad", // Ruta que obtendrá el nivel
+        url: "/admin/api/nivel-capacidad", // La URL para el método de tu controlador
         method: "GET",
         success: function(data) {
-            // Verifica si la respuesta tiene el campo 'nivel'
-            if (data.nivel !== undefined) {
-                console.log("Nivel de capacidad recibido:", data.nivel); // Para depuración
+            if (data.nivel) {
                 $('#nivel-capacidad').text(data.nivel + '%');
             } else {
-                console.log("Respuesta inesperada:", data); // Para depuración
-                $('#nivel-capacidad').text('Datos no disponibles');
+                $('#nivel-capacidad').text('Error de conexión holi');
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            // Si hay un error, mostramos un mensaje
-            console.log("Error en la solicitud:", textStatus, errorThrown); // Para depuración
-            $('#nivel-capacidad').text('Error de conexión pendejo');
+            $('#nivel-capacidad').text('Error de conexión esta mal en algo xd');
+            console.error('Error al obtener el nivel de capacidad:', textStatus, errorThrown);
         }
     });
 }
 
-// Ejecutar la función cada 5 segundos (5000 ms)
-setInterval(actualizarNivelCapacidad, 5000);
+setInterval(actualizarNivelCapacidad, 5000); // Llama a la función cada 5 segundos

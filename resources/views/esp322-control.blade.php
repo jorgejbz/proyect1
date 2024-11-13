@@ -28,8 +28,10 @@
               <div class="card-body">
                 <h1>Control de Capacidad</h1>
                 <!-- El id es para llamar a la función en custom.js para actualizar el nivel de capacidad -->
-                Nivel de capacidad actual: <strong id="nivel-capacidad">{{ $nivelCapacidad ?? 'No disponible' }}%</strong>
+                Nivel de capacidad actual: <strong id="nivel-capacidad">{{ $nivelCapacidad ?? 'Cargando...' }}%</strong>
               </div>
+              <script src="{{ asset('admin/js/custom.js') }}"></script>
+
             </div>
           </div>
         </div>

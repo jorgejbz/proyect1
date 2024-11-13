@@ -84,6 +84,8 @@ class ESP32Controller extends Controller
        try {
            // Intentar obtener la respuesta del ESP32 con un tiempo de espera de 10 segundos
            $response = Http::timeout(10)->get("{$esp32_ip}/api/nivel");
+
+           dd($response); // Depuración para ver la respuesta
    
            if ($response->successful()) {
                // Extraemos el nivel de capacidad si la solicitud es exitosa
@@ -102,25 +104,28 @@ class ESP32Controller extends Controller
    
 
    // Método para devolver el nivel de capacidad del ESP32 en formato JSON
-   public function getNivelCapacidad()
-   {
+   public function getNivelCapacidad(){
        $esp32_ip = 'http://192.168.206.207'; // Cambia a la IP de tu ESP32
-
+   
        try {
            // Hacemos la solicitud con un tiempo de espera de 20 segundos
            $response = Http::timeout(20)->get("{$esp32_ip}/api/nivel");
-
+   
+           // Depurar para ver qué respuesta devuelve el ESP32
+           // dd($response->json());
+   
            if ($response->successful()) {
-               // Si la respuesta es exitosa, devolvemos el nivel de capacidad en formato JSON
+               // Asegúrate de usar la clave correcta del JSON que devuelve el ESP32
                return response()->json(['nivel' => $response->json()['nivel']]);
            } else {
                // Si no es exitosa, devolvemos un error genérico
-               return response()->json(['error' => 'NO JALA ALV'], 500);
+               return response()->json(['error' => 'Error en la solicitud al ESP32'], 500);
            }
        } catch (\Exception $e) {
            // Si ocurre cualquier excepción, devolvemos un mensaje de error
            return response()->json(['error' => 'No se pudo conectar con el ESP32: ' . $e->getMessage()], 500);
        }
    }
+   
 
 }
