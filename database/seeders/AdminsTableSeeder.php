@@ -19,10 +19,10 @@ class AdminsTableSeeder extends Seeder
 
         $adminRecords = [
             [
-                'name'=>'Admin',
+                'name'=>'Admin4',
                 'type'=>'admin',
                 'mobile'=>'000000000',
-                'email'=>'admin1@admin.mx',
+                'email'=>'admin4@admin.mx',
                 'password'=>$password,
                 'image'=>'',
                 'status'=>1
