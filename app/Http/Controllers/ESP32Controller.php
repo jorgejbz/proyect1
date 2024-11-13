@@ -7,6 +7,8 @@ use App\Models\Job;
 
 class ESP32Controller extends Controller
 {
+
+    //ESP32 1 
     public function showLedControl()//comentario de prueba
     {
         session()->put('page', 'led.control');
@@ -60,4 +62,65 @@ class ESP32Controller extends Controller
 
         return redirect()->back()->with('status', 'LED apagado');
     }
+
+//ESP32 2 ULTRASONIDO
+//funcion para checar el nivel de capacidad de la tolva
+// Método para mostrar la página de control de capacidad
+
+    public function showCapacityControl(){
+        // Guardamos en sesión la página actual para navegación o control de estado
+        session()->put('page', 'capacity.control');
+        
+        // Retornamos la vista sin el estado del LED
+        return view('esp322-control');
+    }
+
+   // Método para obtener el nivel de capacidad del ESP32 y mostrarlo en la vista
+   public function showNivelCapacidad()
+   {
+       $esp32_ip = 'http://192.168.206.207'; // IP de tu ESP32
+       $nivelCapacidad = 'NO CONECTADO'; // Valor por defecto en caso de que no se pueda conectar
+   
+       try {
+           // Intentar obtener la respuesta del ESP32 con un tiempo de espera de 10 segundos
+           $response = Http::timeout(10)->get("{$esp32_ip}/api/nivel");
+   
+           if ($response->successful()) {
+               // Extraemos el nivel de capacidad si la solicitud es exitosa
+               $nivelCapacidad = $response->json()['nivel'];
+           }
+       } catch (\Exception $e) {
+           // Si ocurre algún error en la solicitud, mostramos un mensaje de error
+           $nivelCapacidad = 'Error de conexión';
+       }
+   
+       // Pasamos la variable 'nivelCapacidad' a la vista
+       return view('esp322-control', [
+           'nivelCapacidad' => $nivelCapacidad,
+       ]);
+   }
+   
+
+   // Método para devolver el nivel de capacidad del ESP32 en formato JSON
+   public function getNivelCapacidad()
+   {
+       $esp32_ip = 'http://192.168.206.207'; // Cambia a la IP de tu ESP32
+
+       try {
+           // Hacemos la solicitud con un tiempo de espera de 20 segundos
+           $response = Http::timeout(20)->get("{$esp32_ip}/api/nivel");
+
+           if ($response->successful()) {
+               // Si la respuesta es exitosa, devolvemos el nivel de capacidad en formato JSON
+               return response()->json(['nivel' => $response->json()['nivel']]);
+           } else {
+               // Si no es exitosa, devolvemos un error genérico
+               return response()->json(['error' => 'NO JALA ALV'], 500);
+           }
+       } catch (\Exception $e) {
+           // Si ocurre cualquier excepción, devolvemos un mensaje de error
+           return response()->json(['error' => 'No se pudo conectar con el ESP32: ' . $e->getMessage()], 500);
+       }
+   }
+
 }

@@ -70,3 +70,30 @@ $(document).on("click", ".updateUserStatus", function() {
         }
     });
 });
+
+// Función para actualizar el nivel de capacidad automáticamente
+function actualizarNivelCapacidad() {
+    // Hacemos una petición AJAX al controlador
+    $.ajax({
+        url: "/nivel-capacidad", // Ruta que obtendrá el nivel
+        method: "GET",
+        success: function(data) {
+            // Verifica si la respuesta tiene el campo 'nivel'
+            if (data.nivel !== undefined) {
+                console.log("Nivel de capacidad recibido:", data.nivel); // Para depuración
+                $('#nivel-capacidad').text(data.nivel + '%');
+            } else {
+                console.log("Respuesta inesperada:", data); // Para depuración
+                $('#nivel-capacidad').text('Datos no disponibles');
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Si hay un error, mostramos un mensaje
+            console.log("Error en la solicitud:", textStatus, errorThrown); // Para depuración
+            $('#nivel-capacidad').text('Error de conexión pendejo');
+        }
+    });
+}
+
+// Ejecutar la función cada 5 segundos (5000 ms)
+setInterval(actualizarNivelCapacidad, 5000);

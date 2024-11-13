@@ -80,7 +80,7 @@
                   @endif              <li class="nav-item">
                 <a href="{{url('admin/update-admin-details')}}" class="nav-link {{$active}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Update Details</p>
+                  <p>Ver Perfil</p>
                 </a>
               </li>
               {{-- fin --}}
@@ -98,7 +98,7 @@
             </ul>
           </li>
            {{-- para hacer otra seccion copiar de aqui --}}
-          @if(Session::get('page') == "user-list" || Session::get('page') == "led.control")
+          @if(Session::get('page') == "user-list" || Session::get('page') == "led.control" || Session::get('page') == "capacity.control")
           <?php $active = "active"; ?>
           @else
           <?php $active = ""; ?>
@@ -106,7 +106,7 @@
           <li class="nav-item menu-open">
           <a href="#" class="nav-link {{$active}}">
               <i class="nav-icon fas fa-file"></i>
-              <p>Usuarios App Movil
+              <p>App Movil
                   <i class="right fas fa-angle-left"></i>
               </p>
           </a>
@@ -131,10 +131,22 @@
                     <?php $active = ""; ?>
                 @endif
                 <li class="nav-item">
-                    <a href="{{ url('admin/led') }}" class="nav-link {{ $active }}">
+                    <a href="{{ url('admin/prueba') }}" class="nav-link {{ $active }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Led ESP32</p>
+                        <p>ESP32 1</p>
                     </a>
+                </li>
+                {{-- hasta aqui y pegar abajo dependiendo de cuantas quieras agregar --}}
+                @if(Session::get('page') == "capacity.control") {{--el capacity control viene desde el web.php--}}
+                <?php $active = "active"; ?>
+                @else
+                <?php $active = ""; ?>
+                @endif
+                <li class="nav-item">
+                <a href="{{ url('admin/capacitycontrol') }}" class="nav-link {{ $active }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>ESP32 ULTRASONIDO</p>
+                </a>
                 </li>
             </ul>
             </li>
