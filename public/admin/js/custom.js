@@ -72,23 +72,24 @@ $(document).on("click", ".updateUserStatus", function() {
     });
 });
 
-//funcion para actualizar la pagina cada que cambia el status de capacidad
+// Función para actualizar la página cada que cambia el status de capacidad
 function actualizarNivelCapacidad() {
     $.ajax({
         url: "/admin/api/nivel-capacidad", // La URL para el método de tu controlador
         method: "GET",
         success: function(data) {
-            if (data.nivel) {
-                //si todo esta chido te muestra la capacidad
+            // Verifica si 'nivel' está definido, incluso si es 0
+            if (typeof data.nivel !== 'undefined') {
+                // Si todo está bien, te muestra la capacidad
                 $('#nivel-capacidad').text(data.nivel + '%');
             } else {
-                // si conecta pero no esta bien definido en el controller te da este error
+                // Si hay un problema con los datos recibidos
                 $('#nivel-capacidad').text('Error de conexión holi perro');
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            //si esta mal la ruta url te da este error
-            $('#nivel-capacidad').text('Error de conexión esta mal en algo xd');
+            // Si está mal la URL o hay un problema con la solicitud AJAX
+            $('#nivel-capacidad').text('Error de conexión, algo salió mal xd');
             console.error('Error al obtener el nivel de capacidad:', textStatus, errorThrown);
         }
     });
