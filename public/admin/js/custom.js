@@ -79,12 +79,15 @@ function actualizarNivelCapacidad() {
         method: "GET",
         success: function(data) {
             if (data.nivel) {
+                //si todo esta chido te muestra la capacidad
                 $('#nivel-capacidad').text(data.nivel + '%');
             } else {
-                $('#nivel-capacidad').text('Error de conexión holi');
+                // si conecta pero no esta bien definido en el controller te da este error
+                $('#nivel-capacidad').text('Error de conexión holi perro');
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
+            //si esta mal la ruta url te da este error
             $('#nivel-capacidad').text('Error de conexión esta mal en algo xd');
             console.error('Error al obtener el nivel de capacidad:', textStatus, errorThrown);
         }

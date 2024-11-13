@@ -8,8 +8,9 @@ use App\Models\Job;
 class ESP32Controller extends Controller
 {
 
-    //ESP32 1 
-    public function showLedControl()//comentario de prueba
+    //ESP32 1 NOSE
+    //metodo/funcion para mostrar la pagina de control led del esp32-1
+    public function showLedControl()
     {
         session()->put('page', 'led.control');
 
@@ -63,9 +64,10 @@ class ESP32Controller extends Controller
         return redirect()->back()->with('status', 'LED apagado');
     }
 
+
 //ESP32 2 ULTRASONIDO
-//funcion para checar el nivel de capacidad de la tolva
-// Método para mostrar la página de control de capacidad
+    //funcion para checar el nivel de capacidad de la tolva
+    // Método para mostrar la página de control de capacidad
 
     public function showCapacityControl(){
         // Guardamos en sesión la página actual para navegación o control de estado
@@ -76,7 +78,7 @@ class ESP32Controller extends Controller
     }
 
    // Método para obtener el nivel de capacidad del ESP32 y mostrarlo en la vista
-   public function showNivelCapacidad()
+    public function showNivelCapacidad()
    {
        $esp32_ip = 'http://192.168.206.207'; // IP de tu ESP32
        $nivelCapacidad = 'NO CONECTADO'; // Valor por defecto en caso de que no se pueda conectar
@@ -100,11 +102,10 @@ class ESP32Controller extends Controller
        return view('esp322-control', [
            'nivelCapacidad' => $nivelCapacidad,
        ]);
-   }
-   
+    }
 
    // Método para devolver el nivel de capacidad del ESP32 en formato JSON
-   public function getNivelCapacidad(){
+    public function getNivelCapacidad(){
        $esp32_ip = 'http://192.168.206.207'; // Cambia a la IP de tu ESP32
    
        try {
@@ -125,7 +126,6 @@ class ESP32Controller extends Controller
            // Si ocurre cualquier excepción, devolvemos un mensaje de error
            return response()->json(['error' => 'No se pudo conectar con el ESP32: ' . $e->getMessage()], 500);
        }
-   }
-   
+    }
 
 }
