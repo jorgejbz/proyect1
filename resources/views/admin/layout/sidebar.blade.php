@@ -98,7 +98,7 @@
             </ul>
           </li>
            {{-- para hacer otra seccion copiar de aqui --}}
-          @if(Session::get('page') == "user-list" || Session::get('page') == "led.control" || Session::get('page') == "capacity.control")
+          @if(Session::get('page') == "user-list" || Session::get('page')=="store" || Session::get('page') == "led.control" || Session::get('page') == "capacity.control")
           <?php $active = "active"; ?>
           @else
           <?php $active = ""; ?>

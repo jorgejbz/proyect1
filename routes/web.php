@@ -12,7 +12,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
     Route::match(['get','post'],'login',[AdminController::class,'login']);
 
         Route::group(['middleware'=>['admin']],function(){
-        Route::match(['get','post'],'dashboard',[AdminController::class,'dashboard']);
+        Route::match(['get','post'],'dashboard',[AdminController::class,'dashboard'])->name('dashboard');
         Route::match(['get','post'],'update-password',[AdminController::class,'updatePassword']);
         Route::post('check-current-password',[AdminController::class,'checkCurrentPassword']);
         Route::match(['get','post'],'update-admin-details',[AdminController::class,'updateAdminDetails'])->name('update-admin-details');
@@ -43,6 +43,10 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get','post','put'],'add-edit-user-page/{id?}',[UserController::class,'edit']);
         Route::get('delete-user-page/{id}','UserController@destroy');
 
+
+        //ruta para el cambio de idioma dinamico
+        
+        
     });
 });
 

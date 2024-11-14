@@ -19,10 +19,10 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+      <a href="{{route('dashboard')}}" class="h1"><b>Ecotrack</b>WEB</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Inicia Sesion para Entrar</p>
     {{-- eror de inicio de sesion --}}
       @if(Session::has('error_message'))
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -45,7 +45,7 @@
 
       <form action="{{url('admin/login')}}" method="post">@csrf
         <div class="input-group mb-3">
-          <input name="email" type="email" class="form-control" placeholder="Email" required=""
+          <input name="email" type="email" class="form-control" placeholder="Correo" required=""
           @if(isset($_COOKIE['email'])) value="{{$_COOKIE['email']}}"@endif)>
           <div class="input-group-append">
             <div class="input-group-text">
@@ -54,7 +54,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input name="password" type="password" class="form-control" placeholder="Password" required=""
+          <input name="password" type="password" class="form-control" placeholder="Contraseña" required=""
           @if(isset($_COOKIE['password'])) value="{{$_COOKIE['password']}}"@endif)>
           <div class="input-group-append">
             <div class="input-group-text">
@@ -68,13 +68,13 @@
               <input type="checkbox" id="remember" name="remember" @if(isset($_COOKIE['email'])) checked=""
               @endif>
               <label for="remember">
-                Remember Me
+                Recuerdame
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
           </div>
           <!-- /.col -->
         </div>
