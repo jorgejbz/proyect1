@@ -79,10 +79,8 @@ class UserController extends Controller
                     'user_code' => 'required|unique:users,code,' . $id,  // Código único
                     'user_name' => 'required|regex:/^[\p{L}\s]+$/u',     // Solo letras y espacios
                     'user_email' => 'required|string|email|max:255|unique:users,email' . $id,  // Correo único
-                    'user_type' => 'required|regex:/^[\p{L}\s]+$/u', 
                     'user_position' => 'required|string|max:255',                       // Puesto requerido
                     'user_password' => $id ? 'nullable|min:6' : 'required|min:6',  // Contraseña obligatoria si es nuevo
-                    // 'status' => 'required'
                 ];
                 // Mensajes de error personalizados
             $customMessages = [
@@ -91,8 +89,6 @@ class UserController extends Controller
                 'user_email.required' => 'El campo correo es requerido',
                 'user_email.email' => 'El correo debe ser válido',
                 'user_email.unique' => 'El correo ya está registrado',
-                'user_type.regex' => 'El campo nombre solo acepta letras y espacios, no números ni caracteres especiales',
-                'user_type.required' => 'El campo nombre es requerido',
                 'user_name.required' => 'El campo nombre es requerido',
                 'user_name.regex' => 'El campo nombre solo acepta letras y espacios, no números ni caracteres especiales',
                 'user_position.required' => 'El campo puesto es requerido',
@@ -113,9 +109,7 @@ class UserController extends Controller
                     'code' => $data['user_code'],
                     'name' => $data['user_name'],
                     'email' => $data['user_email'],
-                    'type' => $data['user_type'],
                     'position' => $data['user_position'],
-                    'status' => $data['user_status'] ?? 1 // Si no se proporciona 'status', se asigna un valor predeterminado de 1
                 ]);
 
                 // Hashear la contraseña solo si se está añadiendo o si se desea cambiar
@@ -143,7 +137,7 @@ class UserController extends Controller
             'user_code' => 'required|string|max:255',
             'user_email' => 'required|string|email|max:255|unique:users,email',
             // 'user_type' => 'required|regex:/^[\p{L}\s]+$/u', 
-            'user_name' => 'required|string|max:255',
+            'user_name' => 'required|regex:/^[\p{L}\s]+$/u',
             'user_position' => 'required|string|max:255',
             'user_password' => 'required|string|min:8',
         ]);

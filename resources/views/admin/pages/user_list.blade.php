@@ -11,7 +11,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Inicio</a></li>
               <li class="breadcrumb-item active">Ver Usuarios App Movil</li>
             </ol>
           </div><!-- /.col -->
@@ -70,6 +70,7 @@
                     <td>{{ $page->position }}</td>
                     <td>{{ $page->email }}</td>
                     {{-- <td>{{ $page->status }}</td> --}}
+                    {{-- botones de acciones --}}
                     <td>
                         <a title="Editar Datos de Usuario" href="{{url('admin/add-edit-user-page/'.$page->_id)}}"><i class="fas fa-edit"></i></a> &nbsp;&nbsp;
                         <a title="Eliminar Usuario" href="{{url('admin/delete-user-page/'.$page->id)}}" record="page" recordid="{{$page->_id}}"><i class="fas fa-trash"></i></a> &nbsp;&nbsp;

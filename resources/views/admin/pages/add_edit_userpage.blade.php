@@ -114,11 +114,11 @@
                       <label for="user_email">Correo Electrónico</label>
                       <input type="email" class="form-control" name="user_email"  value="{{$user->email}}" required readonly>
                     </div>
-                     <!-- Campo tipo usuario -->
+                     {{-- <!-- Campo tipo usuario -->
                      <div class="form-group">
                       <label for="user_type">Tipo de usuario</label>
                       <input type="text" class="form-control" name="user_type"  value="{{$user->type}}" required>
-                    </div>
+                    </div> --}}
                             <!-- Campo Nombre -->
                     <div class="form-group">
                       <label for="user_name">Nombre</label>

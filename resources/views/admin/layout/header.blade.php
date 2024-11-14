@@ -7,7 +7,7 @@
         </li>
         {{-- ruta home --}}
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{url('admin/dashboard')}}" class="nav-link">Home</a>
+          <a href="{{url('admin/dashboard')}}" class="nav-link">Inicio</a>
         </li>
       </ul>
         
@@ -133,7 +133,7 @@
         </li>
         {{--ruta logout  --}}
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{route('logout')}}" class="nav-link">Logout</a>
+          <a href="{{route('logout')}}" class="nav-link">Cerrar Sesion</a>
         </li>
       </ul>
       
