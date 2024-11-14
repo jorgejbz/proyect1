@@ -16,7 +16,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get','post'],'update-password',[AdminController::class,'updatePassword']);
         Route::post('check-current-password',[AdminController::class,'checkCurrentPassword']);
         Route::match(['get','post'],'update-admin-details',[AdminController::class,'updateAdminDetails'])->name('update-admin-details');
-        Route::get('logout',[AdminController::class,'logout']);
+        Route::get('logout',[AdminController::class,'logout'])->name('logout');
         //registrar admins
         Route::get('add-admin', [AdminController::class, 'create'])->name('create');
         Route::post('admin_register', [AdminController::class, 'store'])->name('store');

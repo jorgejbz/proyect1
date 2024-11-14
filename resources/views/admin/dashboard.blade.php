@@ -181,7 +181,7 @@
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">QUE PONGO AQUI?</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  <a href="{{route('led')}}">View Report BOTON</a>
                 </div>
               </div>
               <div class="card-body">

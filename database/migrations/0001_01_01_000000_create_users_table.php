@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id(); // Crea un campo de clave primaria con auto-incremento
             $table->string('code'); //codigo de usuario
-            $table->string('name'); // Campo 'name' de tipo string para almacenar el nombre del usuario
             $table->string('email')->unique(); // Campo 'email' de tipo string, con restricción de único (no se pueden repetir valores)
+            $table->string('name'); // Campo 'name' de tipo string para almacenar el nombre del usuario
             //$table->timestamp('email_verified_at')->nullable(); // Campo de tipo timestamp para almacenar la fecha de verificación de email, puede ser null
             $table->string('position'); //puesto del usuario
             $table->string('password'); // Campo 'password' de tipo string para almacenar la contraseña del usuario

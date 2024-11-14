@@ -35,7 +35,7 @@
                   @if(!empty(Auth::guard('admin')->user()->image))
                   <img src="{{ asset('admin/img/adminimg/'.Auth::guard('admin')->user()->image) }}" class="profile-user-img img-fluid img-circle" alt="User Image">
           @else
-          <img src="{{ asset('admin/img/no-images.jpg') }}" class="profile-user-img img-fluid img-circle" alt="User Image"
+          <img src="{{ asset('admin/img/no-images.jpg') }}" class="profile-user-img img-fluid img-circle" alt="User Image">
           @endif
                 </div>
 

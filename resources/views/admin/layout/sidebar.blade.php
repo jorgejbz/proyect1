@@ -14,7 +14,7 @@
           @if(!empty(Auth::guard('admin')->user()->image))
           <img src="{{ asset('admin/img/adminimg/'.Auth::guard('admin')->user()->image) }}" class="img-circle elevation-2" alt="User Image">
           @else
-          <img src="{{ asset('admin/img/no-images.jpg') }}" class="img-circle elevation2" alt="User Image"
+          <img src="{{ asset('admin/img/no-images.jpg') }}" class="img-circle elevation2" alt="User Image">
           @endif
         </div>
         <div class="info">

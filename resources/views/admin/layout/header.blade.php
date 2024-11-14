@@ -133,7 +133,7 @@
         </li>
         {{--ruta logout  --}}
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{url('admin/logout')}}" class="nav-link">Logout</a>
+          <a href="{{route('logout')}}" class="nav-link">Logout</a>
         </li>
       </ul>
       

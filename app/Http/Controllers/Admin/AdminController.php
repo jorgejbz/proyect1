@@ -163,8 +163,8 @@ public function store(Request $request){
 
     // Validar los datos del formulario
     $request->validate([
-        'admin_name' => 'required|regex:/^[\p{L}\s]+$/u',     // Solo letras y espacios
         'admin_email' => 'required|string|email|max:255|unique:admins,email',
+        'admin_name' => 'required|regex:/^[\p{L}\s]+$/u',     // Solo letras y espacios
         'admin_mobile' => 'required|numeric',
         'password' => 'required|string|min:8',
     ]);
