@@ -107,8 +107,8 @@ class UserController extends Controller
                 User::where('_id', $user->_id)
                 ->update([
                     'code' => $data['user_code'],
-                    'name' => $data['user_name'],
                     'email' => $data['user_email'],
+                    'name' => $data['user_name'],
                     'position' => $data['user_position'],
                 ]);
 
@@ -136,24 +136,10 @@ class UserController extends Controller
         $request->validate([
             'user_code' => 'required|string|max:255',
             'user_email' => 'required|string|email|max:255|unique:users,email',
-            // 'user_type' => 'required|regex:/^[\p{L}\s]+$/u', 
             'user_name' => 'required|regex:/^[\p{L}\s]+$/u',
             'user_position' => 'required|string|max:255',
             'user_password' => 'required|string|min:8',
         ]);
-        // Mensajes de error personalizados
-        // $customMessages = [
-        //     'user_code.required' => 'El campo código es requerido',
-        //     'user_code.unique' => 'El código ya está registrado',
-        //     'user_email.required' => 'El campo correo es requerido',
-        //     'user_email.email' => 'El correo debe ser válido',
-        //     'user_email.unique' => 'El correo ya está registrado',
-        //     'user_name.required' => 'El campo nombre es requerido',
-        //     'user_name.regex' => 'El campo nombre solo acepta letras y espacios, no números ni caracteres especiales',
-        //     'user_position.required' => 'El campo puesto es requerido',
-        //     'user_password.required' => 'La contraseña es requerida',
-        //     'user_password.min' => 'La contraseña debe tener al menos 6 caracteres',
-        //     ];
 
         // Crear un nuevo usuario
         $user = new User();
