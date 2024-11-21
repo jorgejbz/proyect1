@@ -10702,6 +10702,7 @@ body,
 }
 
 .layout-boxed .wrapper .main-sidebar {
+  color: white;
   left: inherit;
 }
 
@@ -43755,6 +43756,10 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
   * @license MIT
   */
+.p{
+  color: white;
+}
+
 .bootstrap-switch {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;

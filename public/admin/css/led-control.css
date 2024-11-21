@@ -31,7 +31,7 @@ h1 {
 } */
 
 .content-wrapper{
-    background-color: #E8E1DB;
+    background-color: #E8E1DB;/*color de fondo*/
 }
 
 /* Estado del LED */
@@ -79,6 +79,9 @@ h1 {
 }
 
 .main-sidebar{
-    background-color: #362E23;
+    background-color: #362E23;/*color de fondo*/
+}
+
+.p.main-sidebar{
     color: white;
 }
