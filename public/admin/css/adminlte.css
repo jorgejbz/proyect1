@@ -30,7 +30,7 @@
   --info: #17a2b8;
   --warning: #ffc107;
   --danger: #dc3545;
-  --light: #f8f9fa;
+  --light: #6D6C3C;
   --dark: #343a40;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
@@ -64,9 +64,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #6D6C3C;
   text-align: left;
-  background-color: #fff;
+  background-color: #6D6C3C;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -85,6 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
+  color: white;
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -8291,6 +8292,7 @@ button.bg-dark:focus {
 .mt-2,
 .my-2 {
   margin-top: 0.5rem !important;
+  
 }
 
 .mr-2,
@@ -12606,6 +12608,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 .user-panel {
+  background-color: #3A3C26;
   position: relative;
 }
 

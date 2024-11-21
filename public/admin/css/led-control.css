@@ -30,6 +30,10 @@ h1 {
     margin-bottom: 20px;
 } */
 
+.content-wrapper{
+    background-color: #E8E1DB;
+}
+
 /* Estado del LED */
 .status {
     font-size: 18px;
@@ -72,4 +76,9 @@ h1 {
 
 .button.off:hover {
     background-color: #e53935;
+}
+
+.main-sidebar{
+    background-color: #362E23;
+    color: white;
 }
