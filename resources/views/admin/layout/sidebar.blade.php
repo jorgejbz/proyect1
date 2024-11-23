@@ -1,5 +1,7 @@
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar elevation-4">
+  <link rel="stylesheet" href="{{ asset('public/admin/css/led-controler.css') }}">
+
     <!-- Brand Logo -->
     <a href="{{url('admin/dashboard')}}" class="brand-link">
       <img src="{{ asset('admin/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -7,7 +9,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" style="background-color: #362E23">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -50,9 +52,9 @@
                   <?php $active = ""; ?>
                   @endif
               <li class="nav-item menu-open">
-            <a href="#" class="nav-link {{$active}}">
+            <a href="#" class="nav-link {{$active}}" ">
               <i class="nav-icon fas fa-user-alt"></i>
-              <p>
+              <p style="color: #E8E1DB">
                 Administracíon
                 <i class="right fas fa-angle-left"></i>
               </p>
@@ -66,9 +68,9 @@
                   <?php $active = ""; ?>
                   @endif
               <li class="nav-item">
-                <a href="{{url('admin/update-password')}}" class="nav-link {{$active}}">
+                <a href="{{url('admin/update-password')}}" class="nav-link {{$active}}" >
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Actualizar Contraseña</p>
+                  <p style="color: #E8E1DB">Actualizar Contraseña</p>
                 </a>
               </li>
                       {{-- hasta aqui y pegar abajo dependiendo de cuantas quieras agregar si quieres mas repite el proceso como abajo --}}
@@ -80,7 +82,7 @@
                   @endif              <li class="nav-item">
                 <a href="{{url('admin/update-admin-details')}}" class="nav-link {{$active}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ver Perfil</p>
+                  <p style="color: #E8E1DB">Ver Perfil</p>
                 </a>
               </li>
               {{-- fin --}}
@@ -92,7 +94,7 @@
               <li class="nav-item">
                 <a href="{{url('admin/add-admin')}}" class="nav-link {{$active}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Registrar Mas Admins</p>
+                  <p style="color: #E8E1DB">Registrar Mas Admins</p>
                 </a>
               </li>
             </ul>
@@ -106,7 +108,7 @@
           <li class="nav-item menu-open">
           <a href="#" class="nav-link {{$active}}">
               <i class="nav-icon fas fa-file"></i>
-              <p>App Movil
+              <p style="color: #E8E1DB">App Movil
                   <i class="right fas fa-angle-left"></i>
               </p>
           </a>
@@ -121,7 +123,7 @@
                 <li class="nav-item">
                     <a href="{{url('admin/user-list')}}" class="nav-link {{$active}}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Lista de Usuarios</p>
+                        <p style="color: #E8E1DB">Lista de Usuarios</p>
                     </a>
                 </li>
                 {{-- hasta aqui y pegar abajo dependiendo de cuantas quieras agregar --}}
@@ -133,7 +135,7 @@
                 <li class="nav-item">
                     <a href="{{ url('admin/prueba') }}" class="nav-link {{ $active }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>ESP32 1</p>
+                        <p style="color: #E8E1DB">ESP32 1</p>
                     </a>
                 </li>
                 {{-- hasta aqui y pegar abajo dependiendo de cuantas quieras agregar --}}
@@ -145,7 +147,7 @@
                 <li class="nav-item">
                 <a href="{{ url('admin/capacitycontrol') }}" class="nav-link {{ $active }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>ESP32 ULTRASONIDO</p>
+                    <p style="color: #E8E1DB">ESP32 ULTRASONIDO</p>
                 </a>
                 </li>
             </ul>

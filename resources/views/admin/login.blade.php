@@ -14,10 +14,10 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('admin/css/adminlte.min.css')}}">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-color: #D3D3D3">
 <div class="login-box">
   <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
+  <div class="card card-outline card-primary" style="background-color: #E8E1DB ; border-color: #A9AC5D">
     <div class="card-header text-center">
       <a href="{{route('dashboard')}}" class="h1"><b>Ecotrack</b>WEB</a>
     </div>
@@ -74,7 +74,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            <button style="background-color: #A9AC5D" type="submit" class="btn btn-primary btn-block">Entrar</button>
           </div>
           <!-- /.col -->
         </div>
