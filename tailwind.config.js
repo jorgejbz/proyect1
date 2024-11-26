@@ -14,7 +14,11 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'verde' : '#A9AC5D'
+            },
         },
     },
+    
     plugins: [],
 };

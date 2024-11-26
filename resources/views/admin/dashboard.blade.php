@@ -28,17 +28,17 @@
           <div class="col-lg-6">
             {{-- card para el grafico de la tolva --}}
             <div class="card">
-              <div class="card-header border-0">
+              <div class="card-header border-0" style="background-color: #A9AC5D">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Tabla perrona de Registro en TR Tolva le falta nombre</h3>
-                  <a href="{{ url('admin/capacitycontrol') }}">Ver datos</a>
+                  <h3 class="card-title">Registro de almacenamiento de tolva</h3>
+                  <a href="{{ url('admin/capacitycontrol') }}"style="color: #E8E1DB !important; font-weight: bold;">Ver datos</a>
                 </div>
               </div>
               <div class="card-body">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
                     <span class="text-bold text-sm"><strong id="nivel-capacidad">{{ $nivelCapacidad ?? 'Cargando...' }}%</strong></span>
-                    <span class="text-sm">Nivel de Capacidad</span>
+                    <span class="text-sm">Nivel de Llenado</span>
 
                   </p>
                   <p class="ml-auto d-flex flex-column text-right">
@@ -178,10 +178,10 @@
           <!-- /.col-md-6 -->
           <div class="col-lg-6">
             <div class="card">
-              <div class="card-header border-0">
+              <div class="card-header border-0" style="background-color: #A9AC5D">
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">QUE PONGO AQUI?</h3>
-                  <a href="{{route('led')}}">View Report BOTON</a>
+                  <a href="{{route('led')}}" style="color: #E8E1DB !important; font-weight: bold;">View Report BOTON</a>
                 </div>
               </div>
               <div class="card-body">
