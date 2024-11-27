@@ -160,23 +160,23 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: black;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #0056b3;
+  color: black;
   text-decoration: none;
 }
 
 a:not([href]):not([class]) {
-  color: inherit;
+  color: black;
   text-decoration: none;
 }
 
 a:not([href]):not([class]):hover {
-  color: inherit;
+  color: black;
   text-decoration: none;
 }
 
@@ -5073,10 +5073,12 @@ input[type="button"].btn-block {
   list-style: none;
   background-color: #e9ecef;
   border-radius: 0.25rem;
+  
 }
 
 .breadcrumb-item + .breadcrumb-item {
   padding-left: 0.5rem;
+  color: #000;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -10734,6 +10736,7 @@ body,
 
 .layout-navbar-fixed.layout-fixed .wrapper .brand-link.text-sm ~ .sidebar {
   margin-top: calc(2.93725rem + 1px);
+  color: black;
 }
 
 .layout-navbar-fixed.layout-fixed.text-sm .wrapper .control-sidebar {
@@ -14235,6 +14238,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     visibility: hidden;
+    color: #000;
   }
   .sidebar-mini.sidebar-collapse .logo-xl {
     -webkit-animation-name: fadeOut;

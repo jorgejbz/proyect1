@@ -31,7 +31,7 @@
         <!-- Profile Image (Left Column) -->
         @if($user->exists)  <!-- Esto se asegura de que solo se muestre si el usuario existe -->
         <div class="col-md-3">
-            <div class="card card-primary card-outline">
+            <div class="card card-primary card-outline" style="border: none">
                 <div class="card-header">
                     <h3 class="card-title">Perfil del Usuario</h3>
                 </div>
@@ -166,7 +166,7 @@
                   </div>
                 @endif
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">{{ isset($user) && $user->exists ? 'Actualizar Usuario' : 'Crear Usuario' }}</button>
+                  <button type="submit" class="btn btn-primary" style="background-color: #A9AC5D ;outline: none; border: none;">{{ isset($user) && $user->exists ? 'Actualizar Usuario' : 'Crear Usuario' }}</button>
                 </div>
               </form>
             </div>

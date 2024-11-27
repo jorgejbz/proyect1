@@ -28,7 +28,7 @@
         <!-- General form elements -->
         <div class="card card-primary">
           <div class="card-header" style="background-color: #A9AC5D">
-            <h3 class="card-title">Actualizar Contraseña jeje</h3>
+            <h3 class="card-title">Actualizar Contraseña Administrador</h3>
           </div>
             <!-- /.card-header -->
             {{-- eror de inicio de sesion --}}
@@ -71,7 +71,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #A9AC5D ;outline: none; border: none;">Submit</button>
               </div>
             </form>
           </div>

@@ -45,7 +45,7 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Usuarios Activos App Movil</h3>
-              <a style="max-width: 200px; float:right; display:inline-block;" href="{{url('admin/add_userpage')}}" class="btn btn-block btn-primary">Agregar Nuevo Usuario</a>
+              <a style="max-width: 200px; float:right; display:inline-block; background-color:#A9AC5D; border:none" href="{{url('admin/add_userpage')}}" class="btn btn-block btn-primary">Agregar Nuevo Usuario</a>
             </div>
             <!-- /.card-header -->
 
@@ -72,15 +72,15 @@
                     {{-- <td>{{ $page->status }}</td> --}}
                     {{-- botones de acciones --}}
                     <td>
-                        <a title="Editar Datos de Usuario" href="{{url('admin/add-edit-user-page/'.$page->_id)}}"><i class="fas fa-edit"></i></a> &nbsp;&nbsp;
-                        <a title="Eliminar Usuario" href="{{url('admin/delete-user-page/'.$page->id)}}" record="page" recordid="{{$page->_id}}"><i class="fas fa-trash"></i></a> &nbsp;&nbsp;
+                        <a title="Editar Datos de Usuario" href="{{url('admin/add-edit-user-page/'.$page->_id)}}"><i class="fas fa-edit" style="color: black"></i></a> &nbsp;&nbsp;
+                        <a title="Eliminar Usuario" href="{{url('admin/delete-user-page/'.$page->id)}}" record="page" recordid="{{$page->_id}}"><i class="fas fa-trash" style="color: #680003"></i></a> &nbsp;&nbsp;
                         @if($page->status == 1)
                             <a class="updateUserStatus" id="page-{{$page->_id}}" page_id="{{$page->_id}}" href="javascript:void(0)">
-                                <i class="fas fa-toggle-on" aria-hidden="true" status="Active"></i>
+                                <i class="fas fa-toggle-on" aria-hidden="true" status="Active" style="color: #A9AC5D"></i>
                             </a>
                         @else
                             <a class="updateUserStatus" id="page-{{$page->_id}}" page_id="{{$page->_id}}" href="javascript:void(0)">
-                                <i style="color: grey" class="fas fa-toggle-off" aria-hidden="true" status="Inactive"></i>
+                                <i style="color: red" class="fas fa-toggle-off" aria-hidden="true" status="Inactive"></i>
                             </a>
                         @endif
                     </td>
@@ -123,8 +123,8 @@
                         <td>{{ $page->email }}</td>
                         {{-- <td>{{ $page->status }}</td> --}}
                         <td>
-                            <a title="Editar Datos de Usuario" href="{{url('admin/add-edit-user-page/'.$page->_id)}}"><i class="fas fa-edit"></i></a> &nbsp;&nbsp;
-                        <a title="Eliminar Usuario" href="{{url('admin/delete-user-page/'.$page->id)}}" record="page" recordid="{{$page->_id}}"><i class="fas fa-trash"></i></a> &nbsp;&nbsp;
+                            <a title="Editar Datos de Usuario" href="{{url('admin/add-edit-user-page/'.$page->_id)}}"><i class="fas fa-edit" style="color: black"></i></a> &nbsp;&nbsp;
+                        <a title="Eliminar Usuario" href="{{url('admin/delete-user-page/'.$page->id)}}" record="page" recordid="{{$page->_id}}"><i class="fas fa-trash" style="color: #680003"></i></a> &nbsp;&nbsp;
                         @if($page->status == 1)
                             <a class="updateUserStatus" id="page-{{$page->_id}}" page_id="{{$page->_id}}" href="javascript:void(0)">
                                 <i class="fas fa-toggle-on" aria-hidden="true" status="Active"></i>

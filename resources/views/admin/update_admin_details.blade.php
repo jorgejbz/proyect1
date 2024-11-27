@@ -25,10 +25,10 @@
         <div class="row">
           <!-- Profile Image (Left Column) -->
           <div class="col-md-3">
-            <div class="card card-primary card-outline">
+            <div class="card card-primary card-outline" style="border: none">
               <!-- Título del card -->
               <div class="card-header">
-                <h3 class="card-title">Perfil del Administrador</h3>
+                <h3 class="card-title" style="color">Perfil del Administrador</h3>
               </div>
               <div class="card-body box-profile">
                 <div class="text-center">
@@ -65,8 +65,8 @@
           <!-- Update Admin Details (Right Column) -->
           <div class="col-md-9">
             <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Actualizar Detalles del Admin</h3>
+              <div class="card-header" style="background-color: #A9AC5D">
+                <h3 class="card-title" style="color: #E8E1DB; font-weight: bold;">Actualizar Detalles del Admin</h3>
               </div>
               <!-- /.card-header -->
               
@@ -122,14 +122,14 @@
                     <label for="admin_image">Imagen de Administrador</label>
                     <input name="admin_image" type="file" class="form-control">
                     @if(!empty(Auth::guard('admin')->user()->image))
-                    <a target="_blank" href="{{url('admin/img/adminimg/'.Auth::guard('admin')->user()->image)}}">Ver Imagen</a>
+                    <a target="_blank" href="{{url('admin/img/adminimg/'.Auth::guard('admin')->user()->image)}}" style="color:black">Ver Imagen</a>
                     <input type="hidden" name="current_image" value="{{Auth::guard('admin')->user()->image}}">
                     @endif
                   </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" style="background-color: #A9AC5D; outline: none; border: none;">Submit</button>
                 </div>
               </form>
             </div>

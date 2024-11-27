@@ -89,7 +89,7 @@
             <label for="user_password">Contraseña</label>
             <input type="password" class="form-control" name="user_password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Registrar Usuario</button>
+        <button type="submit" class="btn btn-primary" style="background-color: #A9AC5D; outline: none; border: none;">Registrar Usuario</button>
     </form>
 </div>
 </div>

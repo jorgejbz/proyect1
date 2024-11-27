@@ -74,7 +74,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button style="background-color: #A9AC5D" type="submit" class="btn btn-primary btn-block">Entrar</button>
+            <button style="background-color: #A9AC5D outline: none; border: none;" type="submit" class="btn btn-primary btn-block">Entrar</button>
           </div>
           <!-- /.col -->
         </div>

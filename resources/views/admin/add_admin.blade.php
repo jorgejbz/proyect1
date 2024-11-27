@@ -62,7 +62,7 @@
       <div class="col-md-7">
         <!-- General form elements -->
         <div class="card card-primary">
-          <div class="card-header">
+          <div class="card-header" style="background-color: #A9AC5D">
             <h3 class="card-title">Agregar Nuevo Administrador</h3>
           </div>
     <!-- Formulario para agregar usuario -->
@@ -85,8 +85,8 @@
             <label for="password">Contraseña</label>
             <input type="password" class="form-control" name="password" id="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Registrar Administrador</button>
-    </form>
+        <button type="submit" class="btn btn-primary" style="background-color: #A9AC5D; outline: none; border: none;">Registrar Administrador</button>
+      </form>
 </div>
 </div>
 @endsection

@@ -30,7 +30,7 @@ class ESP32Controller extends Controller
 
         // Enviar solicitud al ESP32
         $state = $ledState ? 'on' : 'off';
-        $esp32_ip = 'http://192.168.231.207'; // Cambia a la IP del ESP32
+        $esp32_ip = 'http://192.168.66.137'; // Cambia a la IP del ESP32
         $response = Http::post("{$esp32_ip}/api/control-led", [
             'state' => $state,
         ]);
@@ -56,7 +56,7 @@ class ESP32Controller extends Controller
         // Apaga el LED y actualiza el estado en la sesión
         session(['ledState' => false]);
 
-        $esp32_ip = 'http://192.168.231.207'; // Cambia a la IP del ESP32
+        $esp32_ip = 'http://192.168.66.137'; // Cambia a la IP del ESP32
         $response = Http::post("{$esp32_ip}/api/control-led", [
             'state' => 'off',
         ]);
@@ -80,7 +80,7 @@ class ESP32Controller extends Controller
    // Método para obtener el nivel de capacidad del ESP32 y mostrarlo en la vista
     public function showNivelCapacidad()
    {
-       $esp32_ip = 'http://192.168.206.207'; // IP de tu ESP32
+       $esp32_ip = 'http://192.168.66.207'; // IP de tu ESP32
        $nivelCapacidad = 'NO CONECTADO'; // Valor por defecto en caso de que no se pueda conectar
    
        try {
@@ -106,7 +106,7 @@ class ESP32Controller extends Controller
 
    // Método para devolver el nivel de capacidad del ESP32 en formato JSON
     public function getNivelCapacidad(){
-       $esp32_ip = 'http://192.168.206.207'; // Cambia a la IP de tu ESP32
+       $esp32_ip = 'http://192.168.66.207'; // Cambia a la IP de tu ESP32
    
        try {
            // Hacemos la solicitud con un tiempo de espera de 20 segundos

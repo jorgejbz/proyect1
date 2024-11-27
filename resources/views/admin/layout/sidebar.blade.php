@@ -5,7 +5,7 @@
     <!-- Brand Logo -->
     <a href="{{url('admin/dashboard')}}" class="brand-link">
       <img src="{{ asset('admin/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">EcoTrack</span>
+      <span class="brand-text font-weight-light"style="color:#A9AC5D">EcoTrack</span>
     </a>
 
     <!-- Sidebar -->
@@ -20,7 +20,7 @@
           @endif
         </div>
         <div class="info">
-          <a href="{{url('admin/update-admin-details')}}" class="d-block" readonly>{{ Auth::guard('admin')->user()->name }}</a>
+          <a href="{{url('admin/update-admin-details')}}" class="d-block" readonly style="color: #A9AC5D">{{ Auth::guard('admin')->user()->name }}</a>
         </div>
         
       </div>
