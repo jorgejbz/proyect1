@@ -11,7 +11,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="{{route('dashboard')}}" style="color: #A9AC5D">Inicio</a></li>
               <li class="breadcrumb-item active">Actualizar Contraseña</li>
             </ol>
           </div><!-- /.col -->

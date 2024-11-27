@@ -7,7 +7,7 @@
         </li>
         {{-- ruta home --}}
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{url('admin/dashboard')}}" class="nav-link">Inicio</a>
+          <a href="{{url('admin/dashboard')}}" class="nav-link" style="color: #A9AC5D">Inicio</a>
         </li>
       </ul>
         
