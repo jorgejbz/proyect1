@@ -158,3 +158,82 @@ function actualizarGraficoNivelCapacidad() {
 
 // Llama a la función de actualización cada 3 segundos
 setInterval(actualizarGraficoNivelCapacidad, 3000);
+
+
+//grafico led encendido apagado
+// Configuración del gráfico con Chart.js
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',  // Puedes usar 'line', 'bar', o cualquier tipo de gráfico que prefieras
+    data: {
+        labels: [],  // Etiquetas vacías al inicio
+        datasets: [{
+            label: 'Estado del LED (1 = Encendido, 0 = Apagado)',
+            data: [],  // Datos vacíos al inicio
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            x: {
+                type: 'time',  // Eje X basado en tiempo
+                time: {
+                    unit: 'minute',  // Mostrar datos por minutos
+                    tooltipFormat: 'MMM D, h:mm:ss a'
+                },
+                title: {
+                    display: true,
+                    text: 'Timestamp'
+                }
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Estado (0 = Apagado, 1 = Encendido)'
+                },
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+
+// Función para obtener los últimos 10 registros y actualizar el gráfico
+function fetchLatestJobs() {
+    fetch('/latest-jobs')
+        .then(response => response.json())
+        .then(data => {
+            console.log("Datos recibidos:", data);  // Mostrar los datos recibidos
+
+            // Limpiar datos actuales del gráfico
+            myChart.data.labels = [];
+            myChart.data.datasets[0].data = [];
+
+            // Iterar sobre los registros y actualizar el gráfico
+            data.forEach(job => {
+                var stateValue = job.state === 'on' ? 1 : 0;  // Convertir 'on'/'off' a 1/0
+                var timestamp = new Date(job.timestamp);  // Asegurar que es un objeto Date
+
+                // Verificar que los datos sean correctos
+                console.log("Agregando Timestamp:", timestamp, "Estado:", stateValue);
+
+                // Añadir los datos al gráfico
+                myChart.data.labels.push(timestamp);
+                myChart.data.datasets[0].data.push(stateValue);
+            });
+
+            // Actualizar el gráfico con los nuevos datos
+            myChart.update();
+        })
+        .catch(error => console.error('Error al obtener los datos:', error));  // Manejar errores
+}
+
+// Llamar a la función de obtención de datos cada 10 segundos
+setInterval(fetchLatestJobs, 10000);
+
+// Ejecutar la función la primera vez al cargar la página
+fetchLatestJobs();

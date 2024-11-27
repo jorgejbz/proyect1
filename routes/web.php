@@ -26,6 +26,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::post('/led/toggle', [ESP32Controller::class, 'toggleLed'])->name('led.toggle');
         Route::get('/led/state', [ESP32Controller::class, 'getLedState'])->name('led.state');
         Route::post('/led/off', [ESP32Controller::class, 'turnOffLed'])->name('led.off');
+        Route::get('/latest-jobs', [ESP32Controller::class, 'getLatestJobs'])->name('latest.jobs');
+
 
         //ruta esp32 2 ultrasonido 
         Route::get('/capacitycontrol', [Esp32Controller::class, 'showCapacityControl'])->name('capacity.control'); //de aqui mero se conecta con la sidebar

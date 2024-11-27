@@ -4,21 +4,63 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Job;
+use Illuminate\Support\Facades\Log;
+
 
 class ESP32Controller extends Controller
 {
 
     //ESP32 1 NOSE
     //metodo/funcion para mostrar la pagina de control led del esp32-1
+    // public function showLedControl()
+    // {
+    //     session()->put('page', 'led.control');
+
+    //     // Obtén el estado del LED de la sesión, si no existe, el valor inicial será 'apagado'
+    //     $ledState = session('ledState', false);
+    //     return view('led-control', ['ledState' => $ledState]);
+    // }
     public function showLedControl()
+{
+    session()->put('page', 'led.control');
+
+    // Obtén el estado del LED de la sesión, si no existe, el valor inicial será 'apagado'
+    $ledState = session('ledState', false);
+
+    // Obtiene los últimos 10 registros de la colección 'jobs' desde MongoDB
+    $jobs = Job::orderBy('timestamp', 'desc')->limit(10)->get();
+
+    // Inicializa contadores para los estados 'on' y 'off'
+    $onCount = $jobs->where('state', 'on')->count();
+    $offCount = $jobs->where('state', 'off')->count();
+
+    return view('led-control', [
+        'ledState' => $ledState,
+        'onCount' => $onCount,
+        'offCount' => $offCount,
+        'jobs' => $jobs
+    ]);
+}
+    public function getLatestJobs()
     {
-        session()->put('page', 'led.control');
-
-        // Obtén el estado del LED de la sesión, si no existe, el valor inicial será 'apagado'
-        $ledState = session('ledState', false);
-        return view('led-control', ['ledState' => $ledState]);
+        try {
+            // Obtener los últimos 10 registros ordenados por timestamp
+            $jobs = Job::orderBy('timestamp', 'desc')->take(10)->get();
+    
+            // Verifica si hay registros obtenidos
+            if ($jobs->isEmpty()) {
+                return response()->json(['error' => 'No se encontraron datos'], 404);  // Manejar el caso cuando no hay datos
+            }
+    
+            // Devolver los datos en formato JSON
+            return response()->json($jobs);
+        } catch (\Exception $e) {
+            // Registrar el error y devolver un mensaje de error
+            Log::error('Error al obtener los trabajos: ' . $e->getMessage());
+            return response()->json(['error' => 'Error al obtener los datos de MongoDB'], 500);
+        }
     }
-
+    
     public function toggleLed(Request $request)
     {
         // Cambia el estado del LED guardado en la sesión
