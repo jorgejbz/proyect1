@@ -52,7 +52,7 @@ class UserController extends Controller
     }
     
 
-    // Mostrar la página de añadir o editar usuario
+    // Mostrar la página de editar usuario
     public function edit(Request $request, $id = null) {
             Session::put('page', 'add-edit-user-page/{id?}');
             if ($id == "") {
@@ -110,12 +110,13 @@ class UserController extends Controller
                     'email' => $data['user_email'],
                     'name' => $data['user_name'],
                     'position' => $data['user_position'],
+                    'password' => $data['user_password'],
                 ]);
 
                 // Hashear la contraseña solo si se está añadiendo o si se desea cambiar
-            if (!empty($data['user_password'])) {
-                $user->password = bcrypt($data['user_password']);
-            }
+            // if (!empty($data['user_password'])) {
+            //     $user->password = bcrypt($data['user_password']);
+            // }
             $user->save(); // Guardar el modelo en la base de datos
 
             // Redirigir a la lista de usuarios con un mensaje de éxito
@@ -148,7 +149,7 @@ class UserController extends Controller
         $user->type = 'user';
         $user->name = $request->input('user_name');
         $user->position = $request->input('user_position');
-        $user->password = bcrypt($request->input('user_password')); // Encriptar la contraseña
+        $user->password = $request->input('user_password'); // Encriptar la contraseña
         $user->status = 1; // Asignar status = 1 automáticamente
 
 
