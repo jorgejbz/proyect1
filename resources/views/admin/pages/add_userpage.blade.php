@@ -62,7 +62,7 @@
       <div class="col-md-7">
         <!-- General form elements -->
         <div class="card card-primary">
-          <div class="card-header">
+          <div class="card-header" style="background-color: #A9AC5D">
             <h3 class="card-title">Agregar Nuevo Usuario</h3>
           </div>
     <!-- Formulario para agregar usuario -->

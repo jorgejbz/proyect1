@@ -197,13 +197,20 @@
                     <span class="text-muted">Since last month</span>
                   </p>
                 </div>
+                <!-- Coloca el gráfico de pie en esta tarjeta -->
+
+
                 <!-- /.d-flex -->
+                <!-- resources/views/otra-vista.blade.php -->
+{{-- @include('partials.latest-jobs', ['jobs' => $jobs]) --}}
 
-                <div class="position-relative mb-4">
-                  <canvas id="sales-chart" height="200"></canvas>
+
+                {{-- <div class="position-relative mb-4">
+                  <canvas id="ledStateChart" height="200"></canvas>
                 </div>
+                 --}}
 
-                <div class="d-flex flex-row justify-content-end">
+                {{-- <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
                     <i class="fas fa-square text-primary"></i> This year
                   </span>
@@ -211,7 +218,7 @@
                   <span>
                     <i class="fas fa-square text-gray"></i> Last year
                   </span>
-                </div>
+                </div> --}}
               </div>
             </div>
             <!-- /.card -->

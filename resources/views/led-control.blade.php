@@ -38,22 +38,28 @@
           </form>
 
           <!-- Card para el gráfico -->
-          <div class="card mt-4">
-              <div class="card-header">
-                  <h3 class="card-title">Estado del LED - Gráfico Encendido/Apagado</h3>
-              </div>
-              <div class="card-body">
-                  <!-- Gráfico de estados Encendido/Apagado -->
-                  <canvas id="myChart" width="400" height="200"></canvas>
-              </div>
-          </div>
+          <!-- Aquí agregamos el gráfico circular y la tabla -->
+        <div class="row mt-4">
+            <!-- Columna para el gráfico circular -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Estado del LED (Últimos 10 registros)</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="ledStateChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
 
           <!-- Tabla para mostrar los últimos 10 registros -->
-          <div class="card mt-4">
-              <div class="card-header">
-                  <h3 class="card-title">Últimos 10 Estados del LED</h3>
-              </div>
-              <div class="card-body">
+          <!-- Columna para la tabla -->
+          <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Últimos 10 registros</h3>
+                </div>
+                <div class="card-body">
                   <table class="table table-bordered">
                       <thead>
                           <tr>
@@ -79,8 +85,31 @@
 
       </div>
 
+      <!-- Inicializa el gráfico de Chart.js -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('ledStateChart').getContext('2d');
+            const onCount = document.getElementById('onCount').value;
+            const offCount = document.getElementById('offCount').value;
+
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Encendido', 'Apagado'],
+                    datasets: [{
+                        data: [onCount, offCount],
+                        backgroundColor: ['#36A2EB', '#FF6384'],
+                        borderWidth: 1
+                    }]
+                }
+            });
+        });
+      </script>
+
       <!-- Incluir el archivo custom.js -->
-      <script src="{{ asset('js/custom.js') }}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="{{ asset('js/custom2.js') }}"></script>
+
 
     </body>
 </div>

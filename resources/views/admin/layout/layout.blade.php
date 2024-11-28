@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <head>
+    <!-- ... el código que ya tienes -->
+    <style>
+      /* Cambia el color de fondo del número de página activo */
+      .page-item.active .page-link {
+        background-color: #A9AC5D !important; /* Cambia esto al color que prefieras */
+        border-color: #A9AC5D !important; /* Cambia también el borde */
+        color: white !important; /* Cambia el color del texto si es necesario */
+      }
+    </style>
+  </head>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}"/>

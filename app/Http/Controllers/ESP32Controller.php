@@ -41,6 +41,17 @@ class ESP32Controller extends Controller
         'jobs' => $jobs
     ]);
 }
+
+// NO SE QUE HACE
+// public function showLedState()
+// {
+//     // Obtén los valores de onCount y offCount desde tu base de datos o lógica de aplicación
+//     $onCount = // tu lógica para obtener la cantidad de encendidos
+//     $offCount = // tu lógica para obtener la cantidad de apagados
+
+//     return view('admin.ledstate', compact('onCount', 'offCount'));
+// }
+
     public function getLatestJobs()
     {
         try {

@@ -26,7 +26,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::post('/led/toggle', [ESP32Controller::class, 'toggleLed'])->name('led.toggle');
         Route::get('/led/state', [ESP32Controller::class, 'getLedState'])->name('led.state');
         Route::post('/led/off', [ESP32Controller::class, 'turnOffLed'])->name('led.off');
-        Route::get('/latest-jobs', [ESP32Controller::class, 'getLatestJobs'])->name('latest.jobs');
+        // Route::get('/latest-jobs', [ESP32Controller::class, 'getLatestJobs'])->name('latest.jobs');
+        Route::get('/api/get-latest-jobs', [ESP32Controller::class, 'getLatestJobs'])->name('getLatestJobs');
+
 
 
         //ruta esp32 2 ultrasonido 
@@ -44,6 +46,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::post('user_register', [UserController::class, 'store'])->name('store');
         Route::match(['get','post','put'],'add-edit-user-page/{id?}',[UserController::class,'edit']);
         Route::get('delete-user-page/{id}','UserController@destroy');
+        Route::get('/led-control', [ESP32Controller::class, 'showLedControl']);
 
 
         //ruta para el cambio de idioma dinamico
