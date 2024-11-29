@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Job;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -16,10 +18,21 @@ use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
-    public function dashboard(){
+    public function dashboard() {
+        // Define el estado actual de la página en la sesión
         Session::put('page', 'dashboard');
-        return view('admin.dashboard');
+    
+        // Suponiendo que tienes un modelo Job que representa la colección 'jobs' en MongoDB
+        $jobs = Job::orderBy('timestamp', 'desc')->limit(10)->get();
+    
+        // Inicializa los contadores para los estados 'on' y 'off'
+        $onCount = $jobs->where('state', 'on')->count();
+        $offCount = $jobs->where('state', 'off')->count();
+    
+        // Pasa los contadores a la vista
+        return view('admin.dashboard', compact('onCount', 'offCount'));
     }
+    
     public function login(Request $request){
         if($request->isMethod('post')){
             $data = $request->all();

@@ -29,43 +29,43 @@ function updateChartFromTable() {
     // }
 
     // Crear o actualizar el gráfico
-    document.addEventListener('DOMContentLoaded', function () {
-    const canvas = document.getElementById('ledStateChart');
-    if (!canvas) {
-        console.error("El canvas con id 'ledStateChart' no existe.");
-        return;
-    }
+//     document.addEventListener('DOMContentLoaded', function () {
+//     const canvas = document.getElementById('ledStateChart');
+//     if (!canvas) {
+//         console.error("El canvas con id 'ledStateChart' no existe.");
+//         return;
+//     }
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) {
-        console.error("No se pudo obtener el contexto del canvas.");
-        return;
-    }
+//     const ctx = canvas.getContext('2d');
+//     if (!ctx) {
+//         console.error("No se pudo obtener el contexto del canvas.");
+//         return;
+//     }
 
-    if (window.ledStateChart) {
-        window.ledStateChart.destroy();  // Destruir el gráfico anterior si existe
-    }
+//     if (window.ledStateChart) {
+//         window.ledStateChart.destroy();  // Destruir el gráfico anterior si existe
+//     }
 
-    window.ledStateChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Encendido', 'Apagado'], // Etiquetas
-            datasets: [{
-                data: [onCount, offCount],     // Datos
-                backgroundColor: ['#36A2EB', '#FF6384'],  // Colores
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',  // Posición de la leyenda
-                },
-            },
-        }
-    });
-});
+//     window.ledStateChart = new Chart(ctx, {
+//         type: 'pie',
+//         data: {
+//             labels: ['Encendido', 'Apagado'], // Etiquetas
+//             datasets: [{
+//                 data: [onCount, offCount],     // Datos
+//                 backgroundColor: ['#36A2EB', '#FF6384'],  // Colores
+//                 borderWidth: 1
+//             }]
+//         },
+//         options: {
+//             responsive: true,
+//             plugins: {
+//                 legend: {
+//                     position: 'top',  // Posición de la leyenda
+//                 },
+//             },
+//         }
+//     });
+// });
 
 
 }
@@ -116,3 +116,6 @@ setInterval(fetchLatestJobs, 5000);
 
 // Llamada inicial para cargar los datos al cargar la página
 fetchLatestJobs();
+
+
+

@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">PRUEBA DEL ESP32</h1>
+            <h1 class="m-0">Motor de Llenado</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}" style="color: #A9AC5D">Inicio</a></li>
-              <li class="breadcrumb-item active">ESP32-1</li>
+              <li class="breadcrumb-item active">Motor</li>
             </ol>
           </div>
         </div>
@@ -22,7 +22,7 @@
 
     <body>
       <div class="container">
-          <h1>Control de LED</h1>
+          <h1>Control de Encendido de Boton</h1>
 
           <!-- Estado del LED -->
           <p class="status {{ $ledState ? 'on' : 'off' }}">
@@ -44,7 +44,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Estado del LED (Últimos 10 registros)</h3>
+                        <h3>Grafica del Estado Del Motor</h3>
                     </div>
                     <div class="card-body">
                         <canvas id="ledStateChart" width="400" height="400"></canvas>
@@ -106,8 +106,9 @@
         });
       </script>
 
-      <!-- Incluir el archivo custom.js -->
+      <!-- Incluir el archivo custom2.js -->
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
       <script src="{{ asset('js/custom2.js') }}"></script>
 
 

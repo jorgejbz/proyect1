@@ -100,7 +100,7 @@
             </ul>
           </li>
            {{-- para hacer otra seccion copiar de aqui --}}
-          @if(Session::get('page') == "user-list" || Session::get('page')=="store" || Session::get('page') == "led.control" || Session::get('page') == "capacity.control")
+          @if(Session::get('page') == "user-list" || Session::get('page')=="store")
           <?php $active = "active"; ?>
           @else
           <?php $active = ""; ?>
@@ -126,35 +126,52 @@
                         <p style="color: #E8E1DB">Lista de Usuarios</p>
                     </a>
                 </li>
-                {{-- hasta aqui y pegar abajo dependiendo de cuantas quieras agregar --}}
-                @if(Session::get('page') == "led.control")
-                    <?php $active = "active"; ?>
-                @else
-                    <?php $active = ""; ?>
-                @endif
-                <li class="nav-item">
-                    <a href="{{ url('admin/prueba') }}" class="nav-link {{ $active }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p style="color: #E8E1DB">ESP32 1</p>
-                    </a>
-                </li>
-                {{-- hasta aqui y pegar abajo dependiendo de cuantas quieras agregar --}}
-                @if(Session::get('page') == "capacity.control") {{--el capacity control viene desde el web.php--}}
-                <?php $active = "active"; ?>
-                @else
-                <?php $active = ""; ?>
-                @endif
-                <li class="nav-item">
-                <a href="{{ url('admin/capacitycontrol') }}" class="nav-link {{ $active }}">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p style="color: #E8E1DB">ESP32 ULTRASONIDO</p>
-                </a>
-                </li>
+                
             </ul>
+            {{-- para hacer otra seccion copiar de aqui --}}
+            <?php 
+            // Detecta si estás en alguna página relacionada con Tolva
+            $tolvaOpen = (Session::get('page') == "led.control" || Session::get('page') == "capacity.control" || Session::get('page') == "sound.control") ? "menu-open" : ""; 
+            
+            // Detecta si el enlace principal de Tolva debe estar activo
+            $tolvaActive = (Session::get('page') == "led.control" || Session::get('page') == "capacity.control"|| Session::get('page') == "sound.control") ? "active" : ""; 
+            ?>
+            <li class="nav-item {{ $tolvaOpen }}">
+              <a href="#" class="nav-link {{ $tolvaActive }}">
+                <i class="nav-icon fas fa-file"></i>
+                <p style="color: #E8E1DB">
+                  Tolva
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                {{-- Subsección Motor --}}
+                <?php $active = (Session::get('page') == "led.control") ? "active" : ""; ?>
+                <li class="nav-item">
+                  <a href="{{ url('admin/prueba') }}" class="nav-link {{ $active }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p style="color: #E8E1DB">Motor</p>
+                  </a>
+                </li>
+                {{-- Subsección Nivel --}}
+                <?php $active = (Session::get('page') == "capacity.control") ? "active" : ""; ?>
+                <li class="nav-item">
+                  <a href="{{ url('admin/capacitycontrol') }}" class="nav-link {{ $active }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p style="color: #E8E1DB">Nivel</p>
+                  </a>
+                </li>
+                <?php $active = (Session::get('page') == "sound.control") ? "active" : ""; ?>
+                <li class="nav-item">
+                  <a href="{{ url('admin/sound') }}" class="nav-link {{ $active }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p style="color: #E8E1DB">Alertas</p>
+                  </a>
+                </li>
+              </ul>
             </li>
-/*
-          
-        </ul>
+            
+        {{-- hasta aqui --}}
       </nav>
       <!-- /.sidebar-menu -->
     </div>

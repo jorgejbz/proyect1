@@ -49,8 +49,10 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('/led-control', [ESP32Controller::class, 'showLedControl']);
 
 
-        //ruta para el cambio de idioma dinamico
-        
+        //soundpage ruta
+        //para ver la vista
+        Route::get('/sound', [ESP32Controller::class, 'showSoundControl'])->name('sound');
+
         
     });
 });

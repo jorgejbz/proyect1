@@ -82,12 +82,21 @@
 {{-- custom js --}}
 <script src="{{asset('admin/js/custom.js')}}"></script>
 
+{{-- custom2js para la grafica circulars --}}
+<script src="{{asset('admin/js/custom2.js')}}"></script>
+
 
 {{-- select2 --}}
 <script src="{{url('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <script>
 $('.select2').select2();
 </script>
+
+<!-- Carga de Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+
 
 {{-- DATATABLES --}}
 <script src="{{asset('admin/plugins/datatables/jquery.dataTables.js')}}"></script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Job;
+use App\Models\Alert;
 use Illuminate\Support\Facades\Log;
 
 
@@ -20,8 +21,7 @@ class ESP32Controller extends Controller
     //     $ledState = session('ledState', false);
     //     return view('led-control', ['ledState' => $ledState]);
     // }
-    public function showLedControl()
-{
+    public function showLedControl(){
     session()->put('page', 'led.control');
 
     // Obtén el estado del LED de la sesión, si no existe, el valor inicial será 'apagado'
@@ -39,8 +39,8 @@ class ESP32Controller extends Controller
         'onCount' => $onCount,
         'offCount' => $offCount,
         'jobs' => $jobs
-    ]);
-}
+        ]);
+    }
 
 // NO SE QUE HACE
 // public function showLedState()
@@ -181,4 +181,45 @@ class ESP32Controller extends Controller
        }
     }
 
+
+    //funcion para el pitido
+
+    public function showSoundControl()
+    {
+        session()->put('page', 'sound.control');
+
+        // Obtén el estado del LED de la sesión, si no existe, el valor inicial será 'apagado'
+        $soundState = session('soundState', false);
+        return view('esp323-control', ['soundState' => $soundState]);
+    }
+    public function toggleSound(Request $request)
+    {
+        // Cambia el estado del LED guardado en la sesión
+        $soundState = session('soundState', false);
+        $soundState = !$soundState;
+
+        // Almacena el nuevo estado en la sesión
+        session(['soundState' => $soundState]);
+
+        // Enviar solicitud al ESP32
+        $soundState = $soundState ? 'on' : 'off';
+        $esp32_ip = 'http://192.168.66.137'; // Cambia a la IP del ESP32
+        $response = Http::post("{$esp32_ip}/api/alarma", [
+            'state' => $soundState,
+        ]);
+
+            // Guardar el estado en la colección jobs de MongoDB
+        $alert = new Alert();
+        $alert->state = $state;
+        $alert->timestamp = now();
+        $alert->save(); // Guarda el documento en MongoDB
+
+        return redirect()->back()->with('status', 'LED ' . ($soundState ? 'encendido' : 'apagado'));
+    }
+    public function getSoundState()
+    {
+        // Obtiene el estado del LED de la sesión y responde en formato JSON
+        $soundState = session('soundState', false);
+        return response()->json(['soundState' => $soundState ? 'on' : 'off']);
+    }
 }
