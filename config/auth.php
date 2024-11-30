@@ -54,7 +54,7 @@ return [
     ],
     'alert' =>[
         'driver' => 'session',
-        'provider' => 'alerts',
+        'provider' => 'failed_jobs',
     ],
 ],
 
@@ -88,7 +88,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Job::class,
         ],
-        'alerts' => [
+        'failed_jobs' => [
             'driver' => 'eloquent',
             'model' => App\Models\Alert::class,
             ],
