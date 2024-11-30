@@ -25,8 +25,8 @@
           <h1>Control de Encendido de Boton</h1>
 
           <!-- Estado del LED -->
-          <p class="status {{ $ledState ? 'on' : 'off' }}">
-              Estado del LED: {{ $ledState ? 'Encendido' : 'Apagado' }}
+          <p class="status {{ $AlertState ? 'on' : 'off' }}">
+              Estado del LED: {{ $AlertState ? 'Encendido' : 'Apagado' }}
           </p>
 
           <!-- Botón para cambiar el estado del LED -->
@@ -68,10 +68,10 @@
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach($jobs as $job)
+                          @foreach($alert as $alerts)
                               <tr>
-                                  <td>{{ ucfirst($job->state) }}</td>
-                                  <td>{{ $job->timestamp }}</td>
+                                  <td>{{ ucfirst($alerts->state) }}</td>
+                                  <td>{{ $alerts->timestamp }}</td>
                               </tr>
                           @endforeach
                       </tbody>
