@@ -10,7 +10,7 @@ class Alert extends Model
     use HasFactory;
 
      // Define la colección asociada al modelo
-     protected $collection = 'failed_jobs'; // Asegúrate de que apunte a 'failed_jobs'
+     protected $collection = 'alerts'; // Asegúrate de que apunte a 'failed_jobs'
 
      // Define los campos que pueden ser llenados masivamente
      protected $fillable = [

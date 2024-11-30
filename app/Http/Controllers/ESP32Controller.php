@@ -184,42 +184,53 @@ class ESP32Controller extends Controller
 
     //funcion para el pitido
 
-    public function showSoundControl()
-    {
-        session()->put('page', 'sound.control');
+    public function showAlertControl(){
+        session()->put('page', 'alert.control');
 
         // Obtén el estado del LED de la sesión, si no existe, el valor inicial será 'apagado'
-        $soundState = session('soundState', false);
-        return view('esp323-control', ['soundState' => $soundState]);
+        $alertState = session('alertState', false);
+
+            // Obtiene los últimos 10 registros de la colección 'jobs' desde MongoDB
+        // Cambia $alert por $alerts
+        $alerts = Alert::all(); // Recupera todos los registros para probar
+
+        $AlertonCount = $alerts->where('state', 'on')->count();
+        $AlertoffCount = $alerts->where('state', 'off')->count();
+
+        return view('esp323-control', [
+            'alertState' => $alertState,
+            'AlertonCount' => $AlertonCount,
+            'AlertoffCount' => $AlertoffCount,
+            'alerts' => $alerts  // Cambia aquí de 'alert' a 'alerts'
+        ]);
+
     }
-    public function toggleSound(Request $request)
-    {
+    public function toggleAlert(Request $request){
         // Cambia el estado del LED guardado en la sesión
-        $soundState = session('soundState', false);
-        $soundState = !$soundState;
+        $alertState = session('alertState', false);
+        $alertState = !$alertState;
 
         // Almacena el nuevo estado en la sesión
-        session(['soundState' => $soundState]);
+        session(['alertState' => $alertState]);
 
         // Enviar solicitud al ESP32
-        $soundState = $soundState ? 'on' : 'off';
+        $alertState = $alertState ? 'on' : 'off';
         $esp32_ip = 'http://192.168.66.137'; // Cambia a la IP del ESP32
         $response = Http::post("{$esp32_ip}/api/alarma", [
-            'state' => $soundState,
+            'state' => $alertState,
         ]);
 
             // Guardar el estado en la colección jobs de MongoDB
         $alert = new Alert();
-        $alert->state = $state;
+        // $alert->state = $state;
         $alert->timestamp = now();
         $alert->save(); // Guarda el documento en MongoDB
 
-        return redirect()->back()->with('status', 'LED ' . ($soundState ? 'encendido' : 'apagado'));
+        return redirect()->back()->with('status', 'LED ' . ($alertState ? 'encendido' : 'apagado'));
     }
-    public function getSoundState()
-    {
+    public function getAlertState(){
         // Obtiene el estado del LED de la sesión y responde en formato JSON
-        $soundState = session('soundState', false);
-        return response()->json(['soundState' => $soundState ? 'on' : 'off']);
+        $alertState = session('alertState', false);
+        return response()->json(['alertState' => $alertState ? 'on' : 'off']);
     }
 }

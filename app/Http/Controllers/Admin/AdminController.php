@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Job;
+use App\Models\Alert;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -24,13 +25,17 @@ class AdminController extends Controller
     
         // Suponiendo que tienes un modelo Job que representa la colección 'jobs' en MongoDB
         $jobs = Job::orderBy('timestamp', 'desc')->limit(10)->get();
+        $alerts = Alert::orderBy('timestamp', 'desc')->limit(11)->get();
     
         // Inicializa los contadores para los estados 'on' y 'off'
         $onCount = $jobs->where('state', 'on')->count();
         $offCount = $jobs->where('state', 'off')->count();
-    
+        $AlertOnCount = $alerts->where('state', 'on')->count();
+        $AlertOffCount = $alerts->where('state', 'off')->count();
+        
+        
         // Pasa los contadores a la vista
-        return view('admin.dashboard', compact('onCount', 'offCount'));
+        return view('admin.dashboard', compact('onCount', 'offCount', 'AlertOnCount', 'AlertOffCount'));
     }
     
     public function login(Request $request){

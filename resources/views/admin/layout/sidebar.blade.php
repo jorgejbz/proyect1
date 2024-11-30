@@ -131,10 +131,10 @@
             {{-- para hacer otra seccion copiar de aqui --}}
             <?php 
             // Detecta si estás en alguna página relacionada con Tolva
-            $tolvaOpen = (Session::get('page') == "led.control" || Session::get('page') == "capacity.control" || Session::get('page') == "sound.control") ? "menu-open" : ""; 
+            $tolvaOpen = (Session::get('page') == "led.control" || Session::get('page') == "capacity.control" || Session::get('page') == "alert.control") ? "menu-open" : ""; 
             
             // Detecta si el enlace principal de Tolva debe estar activo
-            $tolvaActive = (Session::get('page') == "led.control" || Session::get('page') == "capacity.control"|| Session::get('page') == "sound.control") ? "active" : ""; 
+            $tolvaActive = (Session::get('page') == "led.control" || Session::get('page') == "capacity.control"|| Session::get('page') == "alert.control") ? "active" : ""; 
             ?>
             <li class="nav-item {{ $tolvaOpen }}">
               <a href="#" class="nav-link {{ $tolvaActive }}">
@@ -161,9 +161,9 @@
                     <p style="color: #E8E1DB">Nivel</p>
                   </a>
                 </li>
-                <?php $active = (Session::get('page') == "sound.control") ? "active" : ""; ?>
+                <?php $active = (Session::get('page') == "alert.control") ? "active" : ""; ?>
                 <li class="nav-item">
-                  <a href="{{ url('admin/sound') }}" class="nav-link {{ $active }}">
+                  <a href="{{ url('admin/alert') }}" class="nav-link {{ $active }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p style="color: #E8E1DB">Alertas</p>
                   </a>

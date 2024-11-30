@@ -49,11 +49,11 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('/led-control', [ESP32Controller::class, 'showLedControl']);
 
 
-        //soundpage ruta
+        //alertpage ruta
         //para ver la vista
-        Route::get('/sound', [ESP32Controller::class, 'showSoundControl'])->name('sound');
-
-        
+        Route::get('/alert', [ESP32Controller::class, 'showAlertControl'])->name('alert');
+        Route::post('/alert/toggle', [ESP32Controller::class, 'toggleAlert'])->name('alert.toggle');
+        Route::get('/alert/state', [ESP32Controller::class, 'getAlertState'])->name('alert.state');
     });
 });
 
