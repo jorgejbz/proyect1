@@ -68,7 +68,6 @@
                                 <tr>
                                     <td>{{ ucfirst($alert->state) }}</td>
                                     <td>{{ $alert->timestamp }}</td>
-
                                 </tr>
                             @endforeach
                         </tbody>
