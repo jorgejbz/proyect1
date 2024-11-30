@@ -13,14 +13,7 @@ class ESP32Controller extends Controller
 
     //ESP32 1 NOSE
     //metodo/funcion para mostrar la pagina de control led del esp32-1
-    // public function showLedControl()
-    // {
-    //     session()->put('page', 'led.control');
 
-    //     // Obtén el estado del LED de la sesión, si no existe, el valor inicial será 'apagado'
-    //     $ledState = session('ledState', false);
-    //     return view('led-control', ['ledState' => $ledState]);
-    // }
     public function showLedControl(){
     session()->put('page', 'led.control');
 
@@ -41,16 +34,6 @@ class ESP32Controller extends Controller
         'jobs' => $jobs
         ]);
     }
-
-// NO SE QUE HACE
-// public function showLedState()
-// {
-//     // Obtén los valores de onCount y offCount desde tu base de datos o lógica de aplicación
-//     $onCount = // tu lógica para obtener la cantidad de encendidos
-//     $offCount = // tu lógica para obtener la cantidad de apagados
-
-//     return view('admin.ledstate', compact('onCount', 'offCount'));
-// }
 
     public function getLatestJobs()
     {
@@ -133,7 +116,7 @@ class ESP32Controller extends Controller
    // Método para obtener el nivel de capacidad del ESP32 y mostrarlo en la vista
     public function showNivelCapacidad()
    {
-       $esp32_ip = 'http://192.168.66.207'; // IP de tu ESP32
+       $esp32_ip = 'http://192.168.66.207'; // IP de tu ESP32 del ULTRASONIDO
        $nivelCapacidad = 'NO CONECTADO'; // Valor por defecto en caso de que no se pueda conectar
    
        try {
@@ -183,6 +166,7 @@ class ESP32Controller extends Controller
 
 
     //funcion para el pitido
+    //aqui no se cambia la IP no hay conexion grafico de chill
 
     public function showAlertControl(){
         session()->put('page', 'alert.control');
@@ -205,32 +189,33 @@ class ESP32Controller extends Controller
         ]);
 
     }
-    public function toggleAlert(Request $request){
-        // Cambia el estado del LED guardado en la sesión
-        $alertState = session('alertState', false);
-        $alertState = !$alertState;
+    // public function toggleAlert(Request $request){
+    //     // Cambia el estado del LED guardado en la sesión
+    //     $alertState = session('alertState', false);
+    //     $alertState = !$alertState;
 
-        // Almacena el nuevo estado en la sesión
-        session(['alertState' => $alertState]);
+    //     // Almacena el nuevo estado en la sesión
+    //     session(['alertState' => $alertState]);
 
-        // Enviar solicitud al ESP32
-        $alertState = $alertState ? 'on' : 'off';
-        $esp32_ip = 'http://192.168.66.137'; // Cambia a la IP del ESP32
-        $response = Http::post("{$esp32_ip}/api/alarma", [
-            'state' => $alertState,
-        ]);
+    //     // Enviar solicitud al ESP32
+    //     $alertState = $alertState ? 'on' : 'off';
+    //     $esp32_ip = 'http://192.168.66.137'; // Cambia a la IP del ESP32 EN DADO CASO DE HABER CONEXION
+    //     $response = Http::post("{$esp32_ip}/api/alarma", [
+    //         'state' => $alertState,
+    //     ]);
 
-            // Guardar el estado en la colección jobs de MongoDB
-        $alert = new Alert();
-        // $alert->state = $state;
-        $alert->timestamp = now();
-        $alert->save(); // Guarda el documento en MongoDB
+    //         // Guardar el estado en la colección jobs de MongoDB
+    //     $alert = new Alert();
+    //     // $alert->state = $state;
+    //     $alert->timestamp = now();
+    //     $alert->save(); // Guarda el documento en MongoDB
 
-        return redirect()->back()->with('status', 'LED ' . ($alertState ? 'encendido' : 'apagado'));
-    }
-    public function getAlertState(){
-        // Obtiene el estado del LED de la sesión y responde en formato JSON
-        $alertState = session('alertState', false);
-        return response()->json(['alertState' => $alertState ? 'on' : 'off']);
-    }
+    //     return redirect()->back()->with('status', 'LED ' . ($alertState ? 'encendido' : 'apagado'));
+    // }
+    
+    // public function getAlertState(){
+    //     // Obtiene el estado del LED de la sesión y responde en formato JSON
+    //     $alertState = session('alertState', false);
+    //     return response()->json(['alertState' => $alertState ? 'on' : 'off']);
+    // }
 }
