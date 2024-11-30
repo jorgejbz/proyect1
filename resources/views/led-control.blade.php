@@ -22,7 +22,7 @@
 
     <body>
       <div class="container">
-          <h1>Control de Encendido de Boton</h1>
+          <h1>Boton de Encendido Del Motor</h1>
 
           <!-- Estado del LED -->
           <p class="status {{ $ledState ? 'on' : 'off' }}">
@@ -64,7 +64,7 @@
                       <thead>
                           <tr>
                               <th>Estado</th>
-                              <th>Timestamp</th>
+                              <th>Fecha Y Hora</th>
                           </tr>
                       </thead>
                       <tbody>
