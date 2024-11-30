@@ -192,7 +192,7 @@ class ESP32Controller extends Controller
 
             // Obtiene los últimos 10 registros de la colección 'jobs' desde MongoDB
         // Cambia $alert por $alerts
-        $alerts = Alert::all(); // Recupera todos los registros para probar
+        $alerts = Alert::orderBy('timestamp', 'desc')->limit(12)->get();
 
         $AlertonCount = $alerts->where('state', 'on')->count();
         $AlertoffCount = $alerts->where('state', 'off')->count();
